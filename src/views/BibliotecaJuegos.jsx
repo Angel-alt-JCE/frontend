@@ -8,7 +8,7 @@ function BibliotecaJuegos() {
   const [developer, setDeveloper] = useState("");
   const [genre, setGenre] = useState("");
   const [description, setDescription] = useState("");
-  const [imagesrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState("");
 
   const saveGame = async () => {
     try {
@@ -23,15 +23,17 @@ function BibliotecaJuegos() {
           developer,
           genre,
           description,
-          imagesrc,
+          imageSrc,
         }),
       });
 
       if (response.ok) {
         const newGame = await response.json();
-        // Actualiza la lista local sin volver a hacer fetch
-        setJuegos([...juegos, newGame.game]);
-        // Limpia los campos del formulario
+
+        // Actualiza lista local
+        setJuegos((prev) => [...prev, newGame.game]);
+
+        // Limpia formulario
         setName("");
         setDeveloper("");
         setGenre("");
@@ -46,7 +48,7 @@ function BibliotecaJuegos() {
   };
 
   useEffect(() => {
-    fetch(URL_API)
+    fetch(URL_API + "games")
       .then((response) => response.json())
       .then((data) => setJuegos(data))
       .catch(() => setJuegos([]));
@@ -55,8 +57,14 @@ function BibliotecaJuegos() {
   return (
     <>
       <h1>Biblioteca de juegos</h1>
+
       <div className="form-new-edit-game">
-        <form onSubmit={(e) => { e.preventDefault(); saveGame(); }}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            saveGame();
+          }}
+        >
           <div>
             <input
               value={name}
@@ -83,12 +91,13 @@ function BibliotecaJuegos() {
               placeholder="Descripción"
             />
             <input
-              value={imagesrc}
+              value={imageSrc}
               onChange={(e) => setImageSrc(e.target.value)}
               type="text"
               placeholder="URL de la imagen"
             />
           </div>
+
           <button type="submit">Agregar juego</button>
         </form>
       </div>
@@ -99,9 +108,9 @@ function BibliotecaJuegos() {
             key={index}
             gameName={juego.name}
             developer={juego.developer}
-            gender={juego.genre}
+            genre={juego.genre}
             description={juego.description}
-            imageSrc={juego.imagesrc}
+            imageSrc={juego.imageSrc}
           />
         ))}
       </div>

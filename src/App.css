@@ -1,0 +1,194 @@
+/* ==== Estilos generales ==== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0e0e10;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== Biblioteca de Juegos ==== */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 30px 0;
+  color: #00d4ff;
+}
+
+.form-new-edit-game {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.form-new-edit-game form {
+  background: #1b1b1f;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.form-new-edit-game input {
+  background: #2a2a2e;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.form-new-edit-game input:focus {
+  outline: 2px solid #00d4ff;
+  background: #1f1f23;
+}
+
+.form-new-edit-game button {
+  background-color: #00d4ff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.form-new-edit-game button:hover {
+  background-color: #00b6d6;
+}
+
+/* ==== Contenedor de juegos ==== */
+.biblioteca-juegos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 0 40px 60px;
+  justify-items: center;
+}
+
+/* ==== Tarjeta de juego ==== */
+.info-tarjeta-juego {
+  background: #1b1b1f;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-bottom: 15px;
+}
+
+.info-tarjeta-juego:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagen */
+.info-tarjeta-juego img,
+.info-tarjeta-juego + div img,
+div > img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid #00d4ff;
+}
+
+/* Texto dentro de la tarjeta */
+.info-tarjeta-juego h2 {
+  font-size: 1.2rem;
+  margin: 10px 20px 5px;
+  color: #00d4ff;
+}
+
+.info-tarjeta-juego p {
+  font-size: 0.9rem;
+  color: #d4d4d4;
+  margin: 6px 20px;
+  line-height: 1.3;
+}
+
+/* Efectos al pasar el mouse */
+.info-tarjeta-juego:hover h2 {
+  color: #7afcff;
+}
+
+.info-tarjeta-juego:hover img {
+  filter: brightness(1.1);
+}
+/* ==== 💠 Efecto NEÓN Gamer ==== */
+
+/* Efecto principal al pasar el mouse sobre la tarjeta */
+.info-tarjeta-juego {
+  position: relative;
+  background: linear-gradient(145deg, #16161a, #1f1f24);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.15);
+  transition: all 0.4s ease;
+  padding-bottom: 15px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Resplandor suave */
+.info-tarjeta-juego::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    #00d4ff,
+    #7f00ff,
+    #00d4ff,
+    #7f00ff
+  );
+  background-size: 400% 400%;
+  z-index: 0;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 15px;
+  animation: neonMove 5s linear infinite;
+}
+
+/* Efecto al pasar el mouse */
+.info-tarjeta-juego:hover::before {
+  opacity: 0.9;
+}
+
+/* Aumenta brillo y tamaño de sombra */
+.info-tarjeta-juego:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4),
+              0 0 40px rgba(127, 0, 255, 0.2);
+}
+
+/* Animación de movimiento de neón */
+@keyframes neonMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Para asegurar que el contenido esté encima del brillo */
+.info-tarjeta-juego * {
+  position: relative;
+  z-index: 1;
+}
