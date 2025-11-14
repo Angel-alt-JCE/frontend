@@ -1,20 +1,79 @@
 /* ==== Estilos generales ==== */
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #000003;
-  color: #fff;
+  background: linear-gradient(135deg, #000003, #0a0f1f, #000003);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  color: #ffffff;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* ==== Biblioteca de Juegos ==== */
+/* Animación de fondo sutil */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Para que todos los textos tengan un ligero glow neon */
+body, h1, h2, h3, h4, h5, h6, p, a, button {
+  text-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+}
+
+
+/* ==== Biblioteca de Juegos - Título Gamer ==== */
 h1 {
   text-align: center;
-  font-size: 2rem;
-  margin: 30px 0;
+  font-size: 3rem;
+  margin: 40px 0;
   color: #00d4ff;
-  font-style: italic;
+  font-family: 'Orbitron', sans-serif; /* Fuente futurista/gamer */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  /* Efecto neón y brillo */
+  text-shadow:
+    0 0 5px #00d4ff,
+    0 0 10px #00d4ff,
+    0 0 20px #00d4ff,
+    0 0 40px #00fff0,
+    0 0 80px #00fff0;
+
+  /* Animación pulsante */
+  animation: neonPulse 1.8s ease-in-out infinite alternate;
 }
+
+/* Animación de pulso */
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 5px #00d4ff,
+      0 0 10px #00d4ff,
+      0 0 20px #00d4ff,
+      0 0 40px #00fff0,
+      0 0 80px #00fff0;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #00d4ff,
+      0 0 20px #00d4ff,
+      0 0 30px #00d4ff,
+      0 0 50px #00fff0,
+      0 0 100px #00fff0;
+  }
+  100% {
+    text-shadow:
+      0 0 5px #00d4ff,
+      0 0 10px #00d4ff,
+      0 0 20px #00d4ff,
+      0 0 40px #00fff0,
+      0 0 80px #00fff0;
+  }
+}
+
 
 .form-new-edit-game {
   display: flex;
@@ -22,17 +81,49 @@ h1 {
   margin-bottom: 40px;
 }
 
+/* ==== Formulario Gamer ==== */
 .form-new-edit-game form {
-  background: #161613;
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  background: #1b0f2e; /* Fondo morado oscuro gamer */
+  padding: 20px 15px;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(20, 241, 255, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   width: 100%;
   max-width: 600px;
+  border: 2px solid #14f1ff; /* Borde neón sutil */
+  position: relative;
+  overflow: hidden;
 }
+
+/* Efecto glow animado del borde */
+.form-new-edit-game form::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #00d4ff, #14f1ff, #00fff0, #14f1ff);
+  filter: blur(40px);
+  opacity: 0.4;
+  animation: glowBorder 6s linear infinite;
+  z-index: 0;
+  border-radius: 14px;
+}
+
+@keyframes glowBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Asegurar que el contenido del form quede por encima del glow */
+.form-new-edit-game form * {
+  position: relative;
+  z-index: 1;
+}
+
 
 .form-new-edit-game input {
   background: #2a2a2e;
@@ -49,17 +140,45 @@ h1 {
   background: #1f1f23;
 }
 
+/* ==== Botón Gamer ==== */
 .form-new-edit-game button {
-  background-color: #00d4ff;
+  background: linear-gradient(45deg, #00d4ff, #00fff0, #14f1ff);
   color: #000;
   font-weight: bold;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 8px #00d4ff, 0 0 20px #00fff0, 0 0 40px #14f1ff;
+  text-shadow: 0 0 5px #00fff0;
+  animation: neonPulseBtn 1.5s infinite alternate ease-in-out;
 }
+
+/* Animación de pulso neon */
+@keyframes neonPulseBtn {
+  0% {
+    box-shadow: 0 0 8px #00d4ff, 0 0 20px #00fff0, 0 0 40px #14f1ff;
+  }
+  50% {
+    box-shadow: 0 0 12px #00d4ff, 0 0 30px #00fff0, 0 0 60px #14f1ff;
+  }
+  100% {
+    box-shadow: 0 0 8px #00d4ff, 0 0 20px #00fff0, 0 0 40px #14f1ff;
+  }
+}
+
+/* Hover animado */
+.form-new-edit-game button:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(45deg, #14f1ff, #00fff0, #00d4ff);
+  text-shadow: 0 0 10px #00fff0, 0 0 20px #14f1ff;
+}
+
 
 .form-new-edit-game button:hover {
   background-color: #00b6d6;
@@ -123,7 +242,6 @@ div > img {
 .info-tarjeta-juego:hover img {
   filter: brightness(1.1);
 }
-/* ==== 💠 Efecto NEÓN Gamer ==== */
 
 /* Efecto principal al pasar el mouse sobre la tarjeta */
 .info-tarjeta-juego {
@@ -193,3 +311,224 @@ div > img {
   position: relative;
   z-index: 1;
 }
+/* === NAVBAR GAMER NEON RGB === */
+.navbar {
+  width: 100%;
+  height: 80px;
+  background: #0a0f1f;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  border-bottom: 2px solid #14f1ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: linear-gradient(90deg, #030712, #0a0f1f, #030712);
+  background-size: 300% 300%;
+  animation: neonMove 8s infinite alternate ease-in-out;
+}
+
+@keyframes neonMove {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}
+
+/* === TÍTULO === */
+.navbar-title {
+  font-size: 38px; /* Más grande */
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  color: #14f1ff;
+  text-shadow: 
+    0 0 8px #ff0000, 
+    0 0 10px #00ff00, 
+    0 0 15px #0000ff, 
+    0 0 20px #14f1ff;
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+/* Pulso animado del título */
+@keyframes glowTitle {
+  0% {
+    text-shadow:
+      0 0 5px #ff0000,
+      0 0 10px #00ff00,
+      0 0 15px #0000ff,
+      0 0 20px #14f1ff;
+  }
+  50% {
+    text-shadow:
+      0 0 15px #ff0000,
+      0 0 20px #00ff00,
+      0 0 25px #0000ff,
+      0 0 35px #14f1ff;
+  }
+  100% {
+    text-shadow:
+      0 0 5px #ff0000,
+      0 0 10px #00ff00,
+      0 0 15px #0000ff,
+      0 0 20px #14f1ff;
+  }
+}
+
+/* === LINKS RGB === */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 700px;
+}
+
+/* === LINKS RGB CON BORDE ANIMADO === */
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links li a {
+  position: relative;
+  font-size: 22px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #00ff00, 0 0 15px #0000ff;
+}
+
+/* Borde RGB animado */
+.navbar-links li a::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #00ffff);
+  background-size: 400% 400%;
+  z-index: -1; /* detrás del texto */
+  animation: rgbBorder 2s linear infinite;
+  filter: blur(5px);
+  opacity: 0.7;
+}
+
+/* Hover más intenso */
+.navbar-links li a:hover::before {
+  filter: blur(5px);
+  opacity: 1;
+}
+
+/* Animación de degradado RGB */
+@keyframes rgbBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Hover con glow intenso */
+.navbar-links li a:hover {
+  transform: scale(1.1);
+  color: #14f1ff;
+  text-shadow:
+    0 0 8px #ff0000,
+    0 0 12px #00ff00,
+    0 0 20px #0000ff,
+    0 0 30px #14f1ff;
+}
+
+/* Línea animada debajo de los enlaces */
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #14f1ff;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+}
+/* === Botones de Tarjeta Gamer === */
+.tarjeta-juego button {
+  font-family: 'Orbitron', sans-serif; /* Tipografía gamer */
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Editar - Azul neón */
+.tarjeta-juego button.editar {
+  background: linear-gradient(45deg, #00d4ff, #14f1ff, #00fff0);
+  color: #000;
+  box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff;
+}
+
+.tarjeta-juego button.editar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #00d4ff, 0 0 25px #14f1ff;
+  color: #fff;
+}
+
+/* Eliminar - Rojo neón */
+.tarjeta-juego button.eliminar {
+  background: linear-gradient(45deg, #ff4b4b, #ff0000, #ff6b6b);
+  color: #000;
+  box-shadow: 0 0 8px #ff4b4b, 0 0 15px #ff0000;
+}
+
+.tarjeta-juego button.eliminar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #ff4b4b, 0 0 25px #ff0000;
+  color: #fff;
+}
+
+/* Glow animado tipo neón para ambos botones */
+.tarjeta-juego button::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #00d4ff, #14f1ff, #00fff0, #ff4b4b, #ff0000, #ff6b6b);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: neonBorder 6s linear infinite;
+}
+
+@keyframes neonBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+

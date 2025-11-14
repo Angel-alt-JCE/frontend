@@ -1,25 +1,16 @@
 import { Link } from "react-router-dom";
+import "../App.css";  
 
 function Navbar() {
   return (
-    <nav style={{
-      background: "#222",
-      padding: "10px 20px",
-      display: "flex",
-      gap: "20px",
-      alignItems: "center"
-    }}>
-      <Link to="/Biblioteca" style={{ color: "white", textDecoration: "none" }}>
-        Biblioteca
-      </Link>
+    <nav className="navbar-gamer">
+      <div className="navbar-logo"> </div>
 
-      <Link to="/reseñas" style={{ color: "white", textDecoration: "none" }}>
-        Reseñas
-      </Link>
-
-      <Link to="/estadisticas" style={{ color: "white", textDecoration: "none" }}>
-        Estadísticas
-      </Link>
+      <ul className="navbar-links">
+        <li><Link to="/biblioteca">Biblioteca</Link></li>
+        <li><Link to="/reseñas">Reseñas</Link></li>
+        <li><Link to="/estadisticas">Estadísticas</Link></li>
+      </ul>
     </nav>
   );
 }
