@@ -142,6 +142,7 @@ function BibliotecaJuegos() {
             type="text"
             placeholder="URL de la imagen"
           />
+          
           <button type="submit">{editId ? "Guardar cambios" : "Agregar juego"}</button>
         </form>
       </div>

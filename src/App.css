@@ -775,7 +775,82 @@ div > img {
   transition: all 0.3s ease-in-out;
   top: 45px;
   left: -110px
-;
+;}
+.navbar {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.user-info {
+  color: #00e1ff;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+}
+
+.user-name {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #00e1ff;
+}
+/* Botón reseñas */
+.btn-reseñas {
+  background: #00c8ff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-reseñas:hover {
+  transform: scale(1.05);
+  background: #2fddff;
+}
+
+/* Botón mostrar/ocultar */
+.btn-toggle-desc {
+  background: #ffa600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-toggle-desc:hover {
+  transform: scale(1.05);
+  background: #ffbe4d;
+}
+
+/* Descripción dinámicamente visible */
+.descripcion {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.08);
+  padding: 10px;
+  border-radius: 8px;
+  line-height: 1.4;
 }
 
 

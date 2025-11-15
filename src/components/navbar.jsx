@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../App.css";  
+const UserId = sessionStorage.getItem("idGamer") || "Invitado";
 
 function Navbar() {
   return (
@@ -11,6 +12,9 @@ function Navbar() {
         <li><Link to="/reseñas">Reseñas</Link></li>
         <li><Link to="/estadisticas">Estadísticas</Link></li>
       </ul>
+      <div className="user-info">
+        <span className="user-name">👤{UserId}</span>
+      </div>
     </nav>
   );
 }
