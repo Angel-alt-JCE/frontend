@@ -466,8 +466,15 @@ div > img {
     gap: 20px;
   }
 }
-/* === Botones de Tarjeta Gamer === */
-.tarjeta-juego button {
+/* === Contenedor de botones === */
+.tarjeta-acciones {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* === Botones comunes === */
+.tarjeta-acciones button {
   font-family: 'Orbitron', sans-serif; /* Tipografía gamer */
   font-weight: bold;
   font-size: 1rem;
@@ -476,52 +483,53 @@ div > img {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00d4ff;
 }
 
-/* Editar - Azul neón */
-.tarjeta-juego button.editar {
+/* === Editar - Azul Neon === */
+.tarjeta-acciones button.editar {
   background: linear-gradient(45deg, #00d4ff, #14f1ff, #00fff0);
   color: #000;
   box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff;
 }
 
-.tarjeta-juego button.editar:hover {
+.tarjeta-acciones button.editar:hover {
   transform: scale(1.1);
   box-shadow: 0 0 12px #00d4ff, 0 0 25px #14f1ff;
   color: #fff;
 }
 
-/* Eliminar - Rojo neón */
-.tarjeta-juego button.eliminar {
+/* === Eliminar - Rojo Neon === */
+.tarjeta-acciones button.eliminar {
   background: linear-gradient(45deg, #ff4b4b, #ff0000, #ff6b6b);
   color: #000;
   box-shadow: 0 0 8px #ff4b4b, 0 0 15px #ff0000;
 }
 
-.tarjeta-juego button.eliminar:hover {
+.tarjeta-acciones button.eliminar:hover {
   transform: scale(1.1);
   box-shadow: 0 0 12px #ff4b4b, 0 0 25px #ff0000;
   color: #fff;
 }
 
-/* Glow animado tipo neón para ambos botones */
-.tarjeta-juego button::after {
+/* === Glow animado RGB alrededor de los botones === */
+.tarjeta-acciones button::after {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
   border-radius: 10px;
   background: linear-gradient(45deg, #00d4ff, #14f1ff, #00fff0, #ff4b4b, #ff0000, #ff6b6b);
   background-size: 400% 400%;
   z-index: -1;
   filter: blur(4px);
   opacity: 0.5;
-  animation: neonBorder 6s linear infinite;
+  animation: neonBorder 3s linear infinite;
 }
 
 @keyframes neonBorder {
@@ -529,6 +537,245 @@ div > img {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* === Estilos generales de inputs === */
+.form-new-edit-game input {
+  font-family: 'Orbitron', sans-serif; /* Tipografía gamer */
+  font-size: 1rem;
+  padding: 10px 14px;
+  border: 2px solid #14f1ff;
+  border-radius: 8px;
+  background: #1b0f2e; /* Fondo morado oscuro */
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  width: 100%;
+  box-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  position: relative;
+}
 
+/* Placeholder con estilo gamer */
+.form-new-edit-game input::placeholder {
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  font-style: italic;
+}
+
+/* Glow animado al hacer focus */
+.form-new-edit-game input:focus {
+  border-color: #00fff0;
+  box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff, 0 0 20px #00fff0;
+  transform: scale(1.02);
+}
+
+/* Diferenciación por clase (opcional, para inputs específicos) */
+.input-name { animation: pulseInput 3s ease-in-out infinite; }
+.input-developer { animation: pulseInput 3.2s ease-in-out infinite; }
+.input-genre { animation: pulseInput 3.4s ease-in-out infinite; }
+.input-description { animation: pulseInput 3.6s ease-in-out infinite; }
+.input-image-src { animation: pulseInput 3.8s ease-in-out infinite; }
+
+/* Animación suave de pulso neon */
+@keyframes pulseInput {
+  0% { box-shadow: 0 0 5px #00d4ff; }
+  50% { box-shadow: 0 0 15px #14f1ff, 0 0 20px #00fff0; }
+  100% { box-shadow: 0 0 5px #00d4ff; }
+}
+/* === Input de búsqueda gamer === */
+.input-search {
+  font-family: 'Orbitron', sans-serif; /* Tipografía gamer */
+  font-size: 1rem;
+  padding: 10px 14px;
+  width: 250px;
+  border-radius: 8px;
+  border: 2px solid #14f1ff;
+  background: #1b0f2e; /* Fondo morado oscuro */
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  position: relative;
+}
+
+/* Placeholder estilizado */
+.input-search::placeholder {
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  font-style: italic;
+}
+
+/* Glow al hacer focus */
+.input-search:focus {
+  border-color: #00fff0;
+  box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff, 0 0 20px #00fff0;
+  transform: scale(1.02);
+}
+
+/* Animación pulsante suave */
+.input-search {
+  animation: pulseSearch 3s ease-in-out infinite;
+}
+
+@keyframes pulseSearch {
+  0% { box-shadow: 0 0 5px #00d4ff; }
+  50% { box-shadow: 0 0 15px #14f1ff, 0 0 20px #00fff0; }
+  100% { box-shadow: 0 0 5px #00d4ff; }
+}
+/* === Contenedor del filtro === */
+.cuadro-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+}
+
+/* Label */
+.cuadro-busqueda label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Select */
+.cuadro-busqueda select {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #14f1ff;
+  background: #1b0f2e; /* Fondo morado oscuro */
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  position: relative;
+}
+
+/* Glow animado al focus */
+.cuadro-busqueda select:focus {
+  border-color: #00fff0;
+  box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff, 0 0 20px #00fff0;
+  transform: scale(1.02);
+}
+
+/* Animación pulsante suave */
+.cuadro-busqueda select {
+  animation: pulseSelect 3s ease-in-out infinite;
+}
+
+@keyframes pulseSelect {
+  0% { box-shadow: 0 0 5px #00d4ff; }
+  50% { box-shadow: 0 0 15px #14f1ff, 0 0 20px #00fff0; }
+  100% { box-shadow: 0 0 5px #00d4ff; }
+}
+/* Fondo estilo gamer */
+.login-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url("public/login.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(3px);
+}
+
+/* Tarjeta del login */
+.login-card {
+  background: rgba(0, 0, 20, 0.55);
+  padding: 45px 50px;
+  border-radius: 18px;
+  width: 360px;
+  text-align: center;
+  border: 1px solid rgba(0, 140, 255, 0.4);
+  box-shadow: 
+    0 0 25px rgba(0, 130, 255, 0.3),
+    0 0 60px rgba(0, 130, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Título */
+.titulo-login {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.titulo-login span {
+  font-size: 1rem;
+  color: #cfd8ff;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid rgba(0, 140, 255, 0.3);
+  transition: 0.3s;
+}
+
+.login-card input:focus {
+  border-color: #4ab6ff;
+  box-shadow: 0 0 6px #4ab6ff;
+}
+
+/* Botón */
+.login-card button {
+  width: 100%;
+  padding: 12px;
+  background: #4ab6ff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  background: #74c4ff;
+  transform: scale(1.05);
+}
+
+
+.contraseña {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid #14f1ff;
+  background: #1b0f2e; 
+  color: #ffffff;
+  margin-bottom: 20px;
+  outline: none;
+  width: 250px;
+  box-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  transition: all 0.3s ease-in-out;
+  top: 45px;
+  left: -110px
+;
+}
 
 

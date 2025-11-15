@@ -1,0 +1,169 @@
+/* === Fondo full screen con animación RGB y partículas simuladas === */
+.login-page {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000003, #0a0f1f, #000003);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+}
+
+/* Animación de fondo */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Simulación de partículas */
+.login-page::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 1%, transparent 1%) repeat;
+  background-size: 50px 50px;
+  animation: particlesMove 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes particlesMove {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-50px, -50px); }
+}
+
+/* Contenedor central tipo panel futurista */
+.login-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(24, 12, 40, 0.85);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00d4ff, 0 0 40px #14f1ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+
+/* Borde RGB animado alrededor del panel */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg,#00d4ff,#14f1ff,#00fff0,#ff00ff,#ff4b4b,#ff0000);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: borderRGB 6s linear infinite;
+}
+
+@keyframes borderRGB {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Título */
+.login-container h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.8rem;
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff,0 0 10px #14f1ff,0 0 20px #00fff0;
+  animation: glowTitle 2s infinite alternate ease-in-out;
+}
+
+@keyframes glowTitle {
+  0% { text-shadow: 0 0 5px #00d4ff,0 0 10px #14f1ff,0 0 20px #00fff0; }
+  50% { text-shadow: 0 0 15px #00d4ff,0 0 25px #14f1ff,0 0 35px #00fff0; }
+  100% { text-shadow: 0 0 5px #00d4ff,0 0 10px #14f1ff,0 0 20px #00fff0; }
+}
+
+/* Inputs */
+.login-container input {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: #1b0f2e;
+  color: #fff;
+  outline: none;
+  width: 280px;
+  box-shadow: 0 0 5px #00d4ff, 0 0 10px #14f1ff;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+/* Borde RGB animado en inputs */
+.login-container input::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: 12px;
+  background: linear-gradient(45deg,#00d4ff,#14f1ff,#00fff0,#ff00ff,#ff4b4b,#ff0000);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: borderRGB 6s linear infinite;
+}
+
+/* Placeholder */
+.login-container input::placeholder {
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff,0 0 10px #14f1ff;
+  font-style: italic;
+}
+
+/* Focus input */
+.login-container input:focus {
+  box-shadow: 0 0 12px #00d4ff,0 0 20px #14f1ff,0 0 25px #00fff0;
+  transform: scale(1.02);
+}
+
+/* Botón */
+.login-container button {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  background: linear-gradient(45deg,#00d4ff,#14f1ff,#00fff0);
+  box-shadow: 0 0 8px #00d4ff, 0 0 15px #14f1ff;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover botón */
+.login-container button:hover {
+  transform: scale(1.1);
+  color: #fff;
+  box-shadow: 0 0 15px #00d4ff,0 0 30px #14f1ff;
+}
+
+/* Glow animado en botón */
+.login-container button::after {
+  content: '';
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 15px;
+  background: linear-gradient(45deg,#00d4ff,#14f1ff,#00fff0,#ff00ff,#ff4b4b,#ff0000);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: borderRGB 6s linear infinite;
+}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "../App.css";
 function BarraBusqueda({ onSearch }) {
   const [texto, setTexto] = useState("");
 
@@ -10,7 +10,7 @@ function BarraBusqueda({ onSearch }) {
 
   return (
     <div style={{ marginBottom: "15px" }}>
-      <input
+      <input className="input-search"
         type="text"
         placeholder="Buscar reseña por juego..."
         value={texto}

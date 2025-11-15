@@ -109,34 +109,34 @@ function BibliotecaJuegos() {
             saveGame();
           }}
         >
-          <input
+          <input className="input-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             type="text"
             placeholder="Nombre del juego"
             required
           />
-          <input
+          <input className="input-developer"
             value={developer}
             onChange={(e) => setDeveloper(e.target.value)}
             type="text"
             placeholder="Desarrollador"
             required
           />
-          <input
+          <input className="input-genre"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
             type="text"
             placeholder="Género"
             required
           />
-          <input
+          <input className="input-description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             type="text"
             placeholder="Descripción"
           />
-          <input
+          <input className="input-image-src"
             value={imageSrc}
             onChange={(e) => setImageSrc(e.target.value)}
             type="text"

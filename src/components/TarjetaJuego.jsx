@@ -17,8 +17,8 @@ function TarjetaJuego({ juego, onEdit, onDelete }) {
       <p><strong>Descripción:</strong> {description}</p>
 
       <div className="tarjeta-acciones">
-        <button onClick={() => onEdit(juego)}>✏️ Editar</button>
-        <button onClick={() => onDelete(_id)}>🗑️ Eliminar</button>
+        <button className='editar' onClick={() => onEdit(juego)}>✏️ Editar</button>
+        <button className='eliminar' onClick={() => onDelete(_id)}>🗑️ Eliminar</button>
       </div>
     </div>
   );

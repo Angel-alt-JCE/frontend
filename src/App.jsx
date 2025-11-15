@@ -12,17 +12,20 @@ import Navbar from "./components/navbar";
 function App() {
   // Guardar idGamer desde sessionStorage
   const [idGamer, setIdGamer] = useState(sessionStorage.getItem("idGamer"));
+  const [redirect, setRedirect] = useState(false); // Para redirección automática después del login
 
   // Función para login
   const handleLogin = (id) => {
     sessionStorage.setItem("idGamer", id);
     setIdGamer(id);
+    setRedirect(true); // Activamos redirección inmediata
   };
 
   // Función para logout
   const handleLogout = () => {
     sessionStorage.removeItem("idGamer");
     setIdGamer(null);
+    setRedirect(false);
   };
 
   return (
@@ -37,15 +40,15 @@ function App() {
         <Route
           path="/"
           element={
-            idGamer 
-              ? <Navigate to="/biblioteca" /> 
+            idGamer || redirect
+              ? <Navigate to="/Biblioteca" />
               : <Login onLogin={handleLogin} />
           }
         />
 
         {/* BIBLIOTECA (PROTEGIDA) */}
         <Route
-          path="/biblioteca"
+          path="/Biblioteca"
           element={
             idGamer 
               ? <BibliotecaJuegos onLogout={handleLogout} /> 
