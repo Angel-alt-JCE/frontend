@@ -1,14 +1,10 @@
 import { useState } from "react";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateCredentials } from "../services/authService";
-=======
->>>>>>> da7cf60d3b1e71314119547d098f706ec7109e0b
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login({ onLogin }) {
-  const [contraseña, setContraseña] = useState("");
+  const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
@@ -18,23 +14,20 @@ function Login({ onLogin }) {
     if (userId.trim() === "") {
       return alert("Ingresa un ID válido");
     }
-    if (contraseña === "") {
+    if (password.trim() === "") {
       return alert("Ingresa una contraseña válida");
     }
 
-<<<<<<< HEAD
-    // Validamos credenciales con el servicio de autenticación
-    const res = validateCredentials({ id: userId.trim(), password: contraseña });
-    if (!res.ok) return alert(res.message || "Credenciales incorrectas");
-=======
-    // Guardamos el ID y la Contraseña en sessionStorage
-    sessionStorage.setItem("idGamer", userId.trim());
-    sessionStorage.setItem("contraseña", contraseña);
->>>>>>> da7cf60d3b1e71314119547d098f706ec7109e0b
-    // Llamamos al login del App.jsx
+    const res = validateCredentials({ id: userId.trim(), password });
+
+    if (!res.ok) {
+      return alert(res.message || "Credenciales incorrectas");
+    }
+
+    // Ejecuta función de App.jsx
     if (onLogin) onLogin(userId.trim());
 
-    // Redirigimos a la Biblioteca 
+    // Redirige a biblioteca
     navigate("/Biblioteca");
   };
 
@@ -60,19 +53,17 @@ function Login({ onLogin }) {
             className="input-password"
             type="password"
             placeholder="Ingresa tu contraseña"
-            value={contraseña}
-            onChange={(e) => setContraseña(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
           <button type="submit">Iniciar sesión</button>
         </form>
-<<<<<<< HEAD
+
         <p style={{ marginTop: "12px" }}>
           ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
         </p>
-=======
->>>>>>> da7cf60d3b1e71314119547d098f706ec7109e0b
       </div>
     </div>
   );

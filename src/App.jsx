@@ -1,10 +1,7 @@
 import './App.css';
 import BibliotecaJuegos from './views/BibliotecaJuegos'; 
 import Login from './components/Login';
-<<<<<<< HEAD
 import Register from './components/Register';
-=======
->>>>>>> da7cf60d3b1e71314119547d098f706ec7109e0b
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -50,7 +47,6 @@ function App() {
           }
         />
 
-<<<<<<< HEAD
         {/* REGISTER */}
         <Route
           path="/register"
@@ -61,8 +57,6 @@ function App() {
           }
         />
 
-=======
->>>>>>> da7cf60d3b1e71314119547d098f706ec7109e0b
         {/* BIBLIOTECA (PROTEGIDA) */}
         <Route
           path="/Biblioteca"
