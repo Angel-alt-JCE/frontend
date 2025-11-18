@@ -3,6 +3,7 @@ import { getReseñas } from "../services/reseñasService";
 import ReseñaCard from "../components/ReseñaCard";
 import BarraBusqueda from "../components/BarraBusqueda";
 import FiltrosReseñas from "../components/FiltrosReseñas";
+import ReviewForm from "../components/ReviewForm";
 
 function ListaReseñas() {
   const [reseñas, setReseñas] = useState([]);
@@ -42,6 +43,8 @@ function ListaReseñas() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Lista de Reseñas</h1>
+
+      <ReviewForm onAdded={obtenerReseñas} />
 
       <BarraBusqueda onSearch={setBusqueda} />
 

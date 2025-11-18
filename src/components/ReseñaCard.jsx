@@ -1,3 +1,5 @@
+import StarRating from "./StarRating";
+
 function ReseñaCard({ reseña }) {
   return (
     <div style={{
@@ -9,7 +11,7 @@ function ReseñaCard({ reseña }) {
     }}>
       <h2>{reseña.gameName}</h2>
 
-      <p><strong>Puntuación:</strong> {reseña.rating} ⭐</p>
+      <p><strong>Puntuación:</strong> <StarRating rating={reseña.rating} readOnly={true} size={16} /> <span style={{marginLeft:8}}>{reseña.rating} ⭐</span></p>
 
       <p><strong>Fecha:</strong> {new Date(reseña.date).toLocaleDateString()}</p>
 
