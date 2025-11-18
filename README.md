@@ -74,11 +74,7 @@ npm run dev    # arranca Vite en http://localhost:5173/
 2. Haz tus cambios y commitea: `git commit -am "Descripción"`
 3. Push y PR: `git push origin feature/mi-cambio` y abre un Pull Request en GitHub.
 
----
-Si quieres, puedo:
-- Combinar automáticamente reseñas remotas y locales al cargar la lista.
-- Añadir editar/eliminar reseñas.
-- Mejorar estilos y accesibilidad del `StarRating`.
+
 
 
 # React + Vite
