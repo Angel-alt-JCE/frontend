@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getReseñas } from "../services/reseñasService"; // ✅ importa solo lo que usas
+import { getReseñas } from "../services/reseñasService"; 
 import ReseñaCard from "../components/ReseñaCard";
 import BarraBusqueda from "../components/BarraBusqueda";
 import FiltrosReseñas from "../components/FiltrosReseñas";
@@ -54,15 +54,19 @@ function ListaReseñas() {
     <div className="lista-reseñas-page">
       <h1>Lista de Reseñas</h1>
 
+      {/* Cuando se agrega reseña, refresca lista */}
       <ReviewForm onAdded={cargarReseñas} />
 
       <BarraBusqueda onSearch={setBusqueda} />
-
       <FiltrosReseñas onFilter={setFiltroPuntuacion} />
 
       <div style={{ marginTop: "20px" }}>
         {filtered.map(r => (
-          <ReseñaCard key={r._id || r.gameName} reseña={r} />
+          <ReseñaCard 
+            key={r._id || r.gameName} 
+            reseña={r} 
+            onChanged={cargarReseñas} // ✅ refresca lista al editar/eliminar
+          />
         ))}
       </div>
     </div>

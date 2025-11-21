@@ -30,3 +30,43 @@ export const addReseña = async (reseña) => {
     return { ok: false, message: e.message };
   }
 };
+
+// Actualizar reseña
+export const updateReseña = async (id, reseña) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/reviews/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reseña),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || "No se pudo actualizar en backend");
+    }
+
+    return { ok: true };
+  } catch (e) {
+    console.error("Error al actualizar reseña en backend:", e.message);
+    return { ok: false, message: e.message };
+  }
+};
+
+// Eliminar reseña
+export const deleteReseña = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:3000/api/reviews/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || "No se pudo eliminar en backend");
+    }
+
+    return { ok: true };
+  } catch (e) {
+    console.error("Error al eliminar reseña en backend:", e.message);
+    return { ok: false, message: e.message };
+  }
+};

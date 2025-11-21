@@ -12,8 +12,8 @@ export default function ReviewForm({ onAdded }) {
     if (!gameName.trim()) return alert("Ingresa el nombre del juego");
 
     const nueva = {
-      juegoId: "691f70f229e7829927323051", // ⚠️ aquí deberías usar el ID real del juego
-      user: "Angel", // ⚠️ aquí deberías usar el usuario logueado
+      gameName: gameName.trim(), 
+      user: "Angel",              
       rating,
       comment: comment.trim()
     };
