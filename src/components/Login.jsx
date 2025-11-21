@@ -11,23 +11,18 @@ function Login({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (userId.trim() === "") {
-      return alert("Ingresa un ID válido");
-    }
-    if (password.trim() === "") {
-      return alert("Ingresa una contraseña válida");
-    }
+    if (userId.trim() === "") return alert("Ingresa un ID válido");
+    if (password.trim() === "") return alert("Ingresa una contraseña válida");
 
     const res = validateCredentials({ id: userId.trim(), password });
 
-    if (!res.ok) {
-      return alert(res.message || "Credenciales incorrectas");
-    }
+    if (!res.ok) return alert(res.message || "Credenciales incorrectas");
 
-    // Ejecuta función de App.jsx
+    // ✅ Guarda el usuario en localStorage
+    localStorage.setItem("idGamer", userId.trim());
+
     if (onLogin) onLogin(userId.trim());
 
-    // Redirige a biblioteca
     navigate("/Biblioteca");
   };
 
