@@ -2,7 +2,7 @@ import StarRating from "./StarRating";
 
 function ReseñaCard({ reseña }) {
   return (
-    <div style={{
+    <div className="reseña-card" style={{
       border: "1px solid #ccc",
       borderRadius: "8px",
       padding: "15px",

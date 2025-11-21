@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../App.css";
 
 function EstadisticasPersonales() {
   const userId = sessionStorage.getItem("idGamer") || "guest";

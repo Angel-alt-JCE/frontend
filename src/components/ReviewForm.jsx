@@ -10,12 +10,12 @@ export default function ReviewForm({ onAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!gameName.trim()) return alert("Ingresa el nombre del juego");
+
     const nueva = {
-      gameName: gameName.trim(),
-      comment: comment.trim(),
+      juegoId: "691f70f229e7829927323051", // ⚠️ aquí deberías usar el ID real del juego
+      user: "Angel", // ⚠️ aquí deberías usar el usuario logueado
       rating,
-      date: new Date().toISOString(),
-      _id: `local-${Date.now()}`
+      comment: comment.trim()
     };
 
     const res = await addReseña(nueva);
@@ -32,8 +32,19 @@ export default function ReviewForm({ onAdded }) {
   return (
     <form onSubmit={handleSubmit} style={{ border: '1px solid #ddd', padding: 12, borderRadius: 8, marginBottom: 16, maxWidth: 500 }}>
       <h3>Agregar Reseña</h3>
-      <input placeholder="Nombre del juego" value={gameName} onChange={(e) => setGameName(e.target.value)} style={{ width: '100%', padding: 8, marginBottom: 8 }} />
-      <textarea placeholder="Tu reseña" value={comment} onChange={(e) => setComment(e.target.value)} style={{ width: '100%', padding: 8, marginBottom: 8 }} rows={4} />
+      <input
+        placeholder="Nombre del juego"
+        value={gameName}
+        onChange={(e) => setGameName(e.target.value)}
+        style={{ width: '100%', padding: 8, marginBottom: 8 }}
+      />
+      <textarea
+        placeholder="Tu reseña"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+        style={{ width: '100%', padding: 8, marginBottom: 8 }}
+        rows={4}
+      />
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
         <strong>Puntuación:</strong>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { getReseñas } from "../services/reseñasService";
+import { getReseñas } from "../services/reseñasService"; // ✅ importa solo lo que usas
 import ReseñaCard from "../components/ReseñaCard";
 import BarraBusqueda from "../components/BarraBusqueda";
 import FiltrosReseñas from "../components/FiltrosReseñas";
 import ReviewForm from "../components/ReviewForm";
+
+import "../App.css";
 
 function ListaReseñas() {
   const [reseñas, setReseñas] = useState([]);
@@ -12,39 +14,47 @@ function ListaReseñas() {
   const [busqueda, setBusqueda] = useState("");
   const [filtroPuntuacion, setFiltroPuntuacion] = useState(null);
 
+  // 🔥 Al montar: carga reseñas desde backend
   useEffect(() => {
-    obtenerReseñas();
+    cargarReseñas();
   }, []);
 
-  const obtenerReseñas = async () => {
+  const cargarReseñas = async () => {
     const data = await getReseñas();
-    setReseñas(data);
-    setFiltered(data);
+
+    if (!data || data.length === 0) {
+      setReseñas([]);
+      setFiltered([]);
+    } else {
+      setReseñas(data);
+      setFiltered(data);
+    }
   };
 
-  // 🔎 Filtro de búsqueda
+  // 🔍 Filtrado dinámico
   useEffect(() => {
-    let resultado = reseñas;
+    let resultado = [...reseñas];
 
     if (busqueda.trim() !== "") {
       resultado = resultado.filter(r =>
-        r.gameName.toLowerCase().includes(busqueda.toLowerCase())
+        r.gameName?.toLowerCase().includes(busqueda.toLowerCase())
       );
     }
 
-    if (filtroPuntuacion) {
-      resultado = resultado.filter(r => r.rating === filtroPuntuacion);
+    if (filtroPuntuacion !== null && filtroPuntuacion !== "") {
+      resultado = resultado.filter(r =>
+        Number(r.rating) === Number(filtroPuntuacion)
+      );
     }
 
     setFiltered(resultado);
-
   }, [busqueda, filtroPuntuacion, reseñas]);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="lista-reseñas-page">
       <h1>Lista de Reseñas</h1>
 
-      <ReviewForm onAdded={obtenerReseñas} />
+      <ReviewForm onAdded={cargarReseñas} />
 
       <BarraBusqueda onSearch={setBusqueda} />
 
@@ -52,7 +62,7 @@ function ListaReseñas() {
 
       <div style={{ marginTop: "20px" }}>
         {filtered.map(r => (
-          <ReseñaCard key={r._id} reseña={r} />
+          <ReseñaCard key={r._id || r.gameName} reseña={r} />
         ))}
       </div>
     </div>

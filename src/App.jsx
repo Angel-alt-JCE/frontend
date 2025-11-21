@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 // Nuevos imports
 import ListaReseñas from "./pages/ListaReseñas";
-import EstadisticasPersonales from "./pages/EstadisticasPersonales"; // si aún no existe, crea archivo vacío
+import EstadisticasPersonales from "./pages/EstadisticasPersonales"; 
 import Navbar from "./components/navbar";
 
 function App() {

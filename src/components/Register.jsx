@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css"; // Reuse login styles for consistency
+import "./Login.css";
 import { registerUser } from "../services/authService";
 
-export default function Register({ onRegister }) {
+export default function Register() {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -18,14 +19,15 @@ export default function Register({ onRegister }) {
     if (password !== confirmPassword) return alert("Las contraseñas no coinciden");
 
     const result = registerUser({ id: userId.trim(), password });
+
     if (!result.ok) return alert(result.message || "No se pudo registrar");
 
-    // Guardamos sesión y disparamos callback
-    sessionStorage.setItem("idGamer", userId.trim());
-    if (onRegister) onRegister(userId.trim());
+    alert("Registro exitoso, ahora inicia sesión.");
 
-    // Redirigir a la Biblioteca
-    navigate("/Biblioteca");
+    // Arreglo Register redirige al login
+
+    // Redirige al login
+    navigate("/");
   };
 
   return (

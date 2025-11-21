@@ -6,7 +6,6 @@ function Navbar() {
   return (
     <nav className="navbar-gamer">
       <div className="navbar-logo"> </div>
-
       <ul className="navbar-links">
         <li><Link to="/Biblioteca">Biblioteca</Link></li>
         <li><Link to="/reseñas">Reseñas</Link></li>
